@@ -48,6 +48,7 @@ const App = () => {
 
   return (
     <div className="flex flex-col items-center pt-5 pb-5">
+      <h1 className="text-palette-red font-bold text-3xl mb-5">WHADANIM</h1>
       <form onSubmit={searchAnimeHandler} className="flex">
         <input
           type="text"
@@ -58,12 +59,12 @@ const App = () => {
         />
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-400 text-white rounded-r px-4 py-2 transition duration-300 ease-in-out hover:shadow-md active:bg-blue-800"
+          className="bg-palette-blue hover:bg-palette-light-blue text-white rounded-r px-4 py-2 transition duration-300 ease-in-out hover:shadow-md active:bg-blue-800"
         >
           Search
         </button>
       </form>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
+      {error && <p className="text-palette-red font-semibold mt-2">{error}</p>}
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {results.map((anime) => (
           <AnimeItem
@@ -76,21 +77,21 @@ const App = () => {
 
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-4 rounded-md shadow-md max-w-lg max-h-full overflow-auto">
+          <div className="bg-white p-4 rounded-md shadow-md max-w-auto max-h-80 overflow-auto px-10">
             <button
-              className="text-red-500 font-bold float-right"
+              className="text-palette-red font-bold float-right"
               onClick={() => setIsModalOpen(false)}
             >
               X
             </button>
             <h2 className="text-center font-bold mb-4">Recommendations</h2>
             {recommendations.length === 0 ? (
-              <p className="text-center">
+              <p className="text-center text-palette-red font-semibold">
                 Sorry, we couldn't find any recommendations for the selected
                 title.
               </p>
             ) : (
-              <div className="grid pb-4 pt-4 grid-cols-1 sm:grid-cols-2 gap-4 overflow-hidden">
+              <div className="grid pb-4 pt-4 grid-cols-1 sm:grid-cols-2 gap-8 overflow-hidden">
                 {recommendations.map((anime) => (
                   <AnimeItem
                     key={anime.mal_id}
